@@ -18,7 +18,7 @@ TODO: Bundle rsync 3 with OSX patches to better support resource forks in HFS+ e
 
 Panel 3 - Sequence Renamer: Rename a directory of files. Useful for multiple images from a camera or 3D rendering.
 
-TODO: Tweak code so file number padding works properly. Currently 001, 0010, 00100, but should be 001, 010, 100
+Needs more use to find bugs
 
 Panel 4 - Blender Render Queue: Sets up a queue of blend files to render on one computer
 
