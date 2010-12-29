@@ -1,0 +1,25 @@
+TD-Tool
+W. Scott Meador
+
+Requires Python 2.6 and wxPython
+
+
+The start of a larger project that supports different tools needed by Technical Directors (TD) and content creation artists.
+
+It is currently in four parts:
+
+Panel 1 - Project Creator: Creates a directory structure to start a project.
+
+TODO: Create some code to sort the tree alphabetically.
+
+Panel 2 - Rsync frontend. Very simple.
+
+TODO: Bundle rsync 3 with OSX patches to better support resource forks in HFS+ extended
+
+Panel 3 - Sequence Renamer: Rename a directory of files. Useful for multiple images from a camera or 3D rendering.
+
+TODO: Tweak code so file number padding works properly. Currently 001, 0010, 00100, but should be 001, 010, 100
+
+Panel 4 - Blender Render Queue: Sets up a queue of blend files on one computer
+
+Needs more use to find bugs
