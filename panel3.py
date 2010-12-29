@@ -10,6 +10,7 @@ class runPanel(wx.Panel):
     def __init__(self, obj, parent):
         wx.Panel.__init__(self, parent)
         
+        # Variables to check UI elements and folders
         self.setExisting = 0
         self.setDestination = 0
         self.fileFolder = 'none'
@@ -60,6 +61,7 @@ class runPanel(wx.Panel):
         self.Bind(wx.EVT_TEXT, self.updateSequential, self.padding)
         self.Bind(wx.EVT_COMBOBOX, self.updateSequential, self.separator)
         
+    # Choose a folder full of files to rename
     def chooseFolder(self, event):
         dlg = wx.DirDialog(self, "Choose a Folder:", style=wx.DD_DEFAULT_STYLE)
         if dlg.ShowModal() == wx.ID_OK:
@@ -73,6 +75,7 @@ class runPanel(wx.Panel):
             self.fileFolder = 'none'
             self.sf.SetLabel('')
     
+    # Choose a destination folder if desired
     def chooseDestination(self, event):
         dlg = wx.DirDialog(self, "Choose a Source Folder:", style=wx.DD_DEFAULT_STYLE)
         if dlg.ShowModal() == wx.ID_OK:
@@ -86,6 +89,7 @@ class runPanel(wx.Panel):
             self.destFolder = 'none'
             self.df.SetLabel('')
     
+    # Change UI as needed
     def existing(self, event):
         if self.useExisting.GetValue():
             self.prefix.Enable(True)
@@ -107,6 +111,7 @@ class runPanel(wx.Panel):
             self.setExisting = 0
             self.updateSequential(event)
     
+    # Change UI if using a destination folder
     def destMake(self, event):
         if self.destinationCheck.GetValue():
             self.destButton.Enable(True)
@@ -115,6 +120,7 @@ class runPanel(wx.Panel):
             self.destButton.Enable(False)
             self.setDestination = 0
     
+    # Add prefix and/or suffix
     def doPreSuf(self, filename):
         a = filename #'filename.xxx'
         b = a.split('.')
@@ -135,10 +141,12 @@ class runPanel(wx.Panel):
             
         return presuf
     
+    # Update the UI
     def updatePreSuf(self, event):
         returned = self.doPreSuf('filename.xxx')
         self.combinedName.SetLabel(returned)
 
+    # Create the sequential filename
     def doSequential(self, filename, n):
         a = filename
         b = a.split('.')
@@ -164,14 +172,17 @@ class runPanel(wx.Panel):
         
         return d
 
+    # Update the UI to show what changes will happen
     def updateSequential(self, event):
         d = self.doSequential('filename.xxx', self.startNum.GetValue())
         self.combinedName.SetLabel(d)
-        
+
+    # Here is where it all happens
     def renameFiles(self, event):
         #assumes all files are ready to be renamed in a folder and all files have an extension
         # consider checking for OS to replace '/*.*'
         
+        # Check to see if a folder was chosen
         if self.fileFolder == 'none':
             dlg = wx.MessageDialog(self, '',
                         'Choose a folder of files to be renamed',
@@ -183,6 +194,7 @@ class runPanel(wx.Panel):
         
         else:
             def copyOrRename(fileName, file):
+                # Copy the file
                 if self.setDestination == 1:
                     print self.destFolder + '/' + file
                     cmdString = 'cp ' + self.fileFolder + '/' + fileName + ' ' + self.destFolder + '/' + file
