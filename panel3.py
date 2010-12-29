@@ -147,6 +147,7 @@ class runPanel(wx.Panel):
         self.combinedName.SetLabel(returned)
 
     # Create the sequential filename
+    # n is the current number to add to the filename
     def doSequential(self, filename, n):
         a = filename
         b = a.split('.')
@@ -155,14 +156,16 @@ class runPanel(wx.Panel):
         if sep == 'none':
             sep = ''                
         
+        # Create number padding - rework
         p = int(self.padding.GetValue())
-        c = '0'
-        for i in range (len(n), p):
-            c = c + '0'
+        c = ''
+        if len(n) < p:
+            for i in range (len(n), p):
+                c = c + '0'
         newStart = c + n
         
         b.pop(0)
-        b.insert(0, self.newName.GetValue())
+        b.insert(0, self.newName.GetValue()) # newName is the name of the file
         b.insert(-1, sep)
         b.insert(-1, newStart)
         b.insert(-1, '.')
