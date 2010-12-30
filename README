@@ -1,10 +1,10 @@
 TD-Tool
 W. Scott Meador
 
-Requires Python 2.6 and wxPython
+Requires Python 2.6 and wxPython. Developed on OSX 10.5,10.6. Tested on Linux. Assume it will need some path re-coding to work on Windows "/" vs "\\".
 
 
-The start of a larger project that supports different tools needed by Technical Directors (TD) and content creation artists.
+It is the start of a larger project that supports different tools needed by Technical Directors (TD) and content creation artists. Would like to port the GUI to QT via pyQT or pySide.
 
 It is currently in four parts:
 
