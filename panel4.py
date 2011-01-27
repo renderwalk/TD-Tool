@@ -57,7 +57,7 @@ class runPanel(wx.Panel):
         #wx.Button(self, 8, 'Clear Finished', (550, 370))
         
         self.startButton = wx.Button(self, 6, '----- Start Queue -----', (300, 400))
-        wx.Button(self, 7, '----- Stop Queue -----', (300, 435))
+        #wx.Button(self, 7, '----- Stop Queue -----', (300, 435))
 
         self.Bind(wx.EVT_BUTTON, self.execDir, id=1)
         self.Bind(wx.EVT_BUTTON, self.getProject, id=2)
