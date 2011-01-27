@@ -14,7 +14,7 @@ class runPanel(wx.Panel):
         self.newProject = ""
         self.newCommand = ""
         self.queueList = []
-        self.queueFinished = []
+        #self.queueFinished = []
         self.newOutputFolder = ""
         
         wx.Panel.__init__(self, parent)
@@ -47,14 +47,14 @@ class runPanel(wx.Panel):
         wx.Button(self, 5, 'Remove from Queue', (10, 370))
         wx.Button(self, 9, 'Clear Queue', (10, 405))
         
-        wx.StaticText(self, -1, 'Current Render:', (360, 155))
-        self.currentRender = wx.lib.stattext.GenStaticText(self, -1, '', (465, 155))
+        #wx.StaticText(self, -1, 'Current Render:', (360, 155))
+        #self.currentRender = wx.lib.stattext.GenStaticText(self, -1, '', (465, 155))
         
-        wx.StaticText(self, -1, 'Finished:', (405, 185))
-        self.queueFinished = wx.ListCtrl(self, -1, (465, 185), wx.Size(280, 180), style=wx.LC_REPORT)
-        self.queueFinished.InsertColumn(0, 'Finished Jobs')
-        self.queueFinished.SetColumnWidth(0, 280)
-        wx.Button(self, 8, 'Clear Finished', (550, 370))
+        #wx.StaticText(self, -1, 'Finished:', (405, 185))
+        #self.queueFinished = wx.ListCtrl(self, -1, (465, 185), wx.Size(280, 180), style=wx.LC_REPORT)
+        #self.queueFinished.InsertColumn(0, 'Finished Jobs')
+        #self.queueFinished.SetColumnWidth(0, 280)
+        #wx.Button(self, 8, 'Clear Finished', (550, 370))
         
         self.startButton = wx.Button(self, 6, '----- Start Queue -----', (300, 400))
         wx.Button(self, 7, '----- Stop Queue -----', (300, 435))
@@ -68,9 +68,9 @@ class runPanel(wx.Panel):
         self.Bind(wx.EVT_BUTTON, self.addQueue, id=4)
         self.Bind(wx.EVT_BUTTON, self.removeQueue, id=5)
         self.Bind(wx.EVT_BUTTON, self.startQueue, id=6)
-        self.Bind(wx.EVT_BUTTON, self.stopQueue, id=7)
-        self.Bind(wx.EVT_BUTTON, self.clearFinished, id=8)
-        self.Bind(wx.EVT_BUTTON, self.clearJobs, id=9)
+        #self.Bind(wx.EVT_BUTTON, self.stopQueue, id=7)
+        #self.Bind(wx.EVT_BUTTON, self.clearFinished, id=8)
+        #self.Bind(wx.EVT_BUTTON, self.clearJobs, id=9)
         
     #Functions
     
@@ -212,15 +212,15 @@ class runPanel(wx.Panel):
         if self.queueList != []:
             thread.start_new_thread(self.render, ()) #threaded so the GUI is not locked
 
-    def stopQueue(self, event):
-        try:
-            self.process.terminate() #requires Python 2.6+
-        except:
-            pass
+    #def stopQueue(self, event):
+    #    try:
+    #        self.process.terminate() #requires Python 2.6+
+    #    except:
+    #        pass
         
     def clearJobs(self, event):
         self.projFiles.ClearAll()
         self.queueList = []
     
-    def clearFinished(self, event):
-        self.queueFinished.ClearAll()
+    #def clearFinished(self, event):
+    #    self.queueFinished.ClearAll()
