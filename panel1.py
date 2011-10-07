@@ -41,7 +41,7 @@ class runPanel(wx.Panel):
         # Call fillmeup
         tmpPath = os.path.split((os.path.abspath(wsm.__file__)))
         wsm.userpaths = tmpPath[0] + '/user_paths.xml'
-        self.xml = ET.parse(wsm.userpaths)
+        self.xml = ET.parse(wsm.userpaths) # Consider trying '//user_paths.xml'
         root = self.fillmeup()
         
         # expand root
